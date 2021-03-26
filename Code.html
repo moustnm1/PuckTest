@@ -118,7 +118,7 @@ connection.write("clearInterval(1)\n", function() { });
 
 data.splice(0,data.length);
 
-connection.write("setInterval(function(){Bluetooth.println(RespMonitor(3));} ,30); \n", function() { });
+connection.write("setInterval(function(){Bluetooth.println(RespMonitor(3));} ,10); \n", function() { });
 
 t = new Date();
 
@@ -128,7 +128,9 @@ var date_win_min = t.getTime();
 
 var date_win_max = date_win_min + 2*taxis_increment;
 
-g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
+if ((data.length&15)==15) {
+  g.updateOptions( { 'file' : data } );
+};
 
 rec_flag = true;
 

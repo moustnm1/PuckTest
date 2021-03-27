@@ -68,7 +68,7 @@ dateWindow: [date_win_min, date_win_max],
 
 // valueRange: [980, 1020],
 
-labels: ['Time', 'Breathing Rate'],
+labels: ['Time', 'Pressure'],
 
 showRangeSelector: true
 
@@ -128,9 +128,7 @@ var date_win_min = t.getTime();
 
 var date_win_max = date_win_min + 2*taxis_increment;
 
-if ((data.length&15)==15) {
-  g.updateOptions( { 'file' : data } );
-};
+g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
 
 rec_flag = true;
 
